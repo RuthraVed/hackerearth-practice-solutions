@@ -35,14 +35,6 @@ def total_no_of_strings_without_13(n):
         if n  in cache2:
             return cache2[n]
         
-        # Base conditions
-        if n == 0:
-            cache2[n] = 1
-            return cache2[n]
-        if n == 1:
-            cache2[n] = 10
-            return cache2[n]
-        
         temp1 = total_no_of_strings_without_13(n//2)
         temp2 = total_no_of_strings_without_13((n//2)-1)
 
