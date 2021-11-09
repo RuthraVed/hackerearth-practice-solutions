@@ -1,27 +1,28 @@
 # Python program for implementation of MergeSort
 
-# Merge Sort Algorithm
-def mergeSort(arr):
+# Implementation of Merge Sort Algorithm
+def merge_sort(arr):
     if len(arr) > 1:
         # Finding the mid of the array
-        mid = len(arr)//2
-        
+        mid = len(arr) // 2
+
         # Divide...
         # The array elements into
-        L, R = arr[:mid], arr[mid:]   # A Left half & A Right half
-        mergeSort(L)
-        mergeSort(R)
-        
+        L, R = arr[:mid], arr[mid:]  # A Left half & A Right half
+        merge_sort(L)
+        merge_sort(R)
+
         # Conquer...
         # By sorting and merging the two parts into one
         merge(arr, L, R)
+
 
 # Merge Sort's sorting & merging function
 def merge(arr, L, R):
     i = j = k = 0
 
     # To place larger among elements L and R,in the correct position
-    # until we reach either end of either L or R, 
+    # until we reach either end of either L or R,
     while i < len(L) and j < len(R):
         if L[i] < R[j]:
             arr[k] = L[i]
@@ -47,19 +48,17 @@ def merge(arr, L, R):
 # Driver Code
 if __name__ == '__main__':
     arr = [100, 99, 88]
-    
+
     # Code to print the list
-    def printList(arr):
+    def print_list(arr):
         for i in range(len(arr)):
             print(arr[i], end=" ")
         print()
-    
+
     print("Given array is", end="\n")
-    printList(arr)
-    
-    mergeSort(arr)
-    
+    print_list(arr)
+    merge_sort(arr)     # Merge Sort Call
     print("Sorted array is: ", end="\n")
-    printList(arr)
+    print_list(arr)
 
 # This code is contributed by Abhishek Dev
