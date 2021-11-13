@@ -1,4 +1,4 @@
-# Being greedy for Water
+# Being Greedy For Water
 
 def max_bottles_filled(sorted_bottle_list, container_capacity):
     bottles_filled = 0
@@ -19,7 +19,7 @@ if __name__ == '__main__':
     from pathlib import Path
 
     file_name = Path(__file__).stem + ".txt"
-    input_file_path = Path().cwd() / r'large_inputs' / file_name
+    input_file_path = Path().cwd() / r'large_input_files' / file_name
     print(f'Reading input from file at {input_file_path}.')
     with open(input_file_path, "r", encoding="utf8") as txt_file:
         T = int(txt_file.readline())
