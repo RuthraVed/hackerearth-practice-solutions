@@ -1,0 +1,1 @@
+# Code Snippets: To find K sub array in araay N items
