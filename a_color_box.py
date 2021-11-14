@@ -1,20 +1,21 @@
 # A Color Box
 
-# My initial logic
-def color_buckets_possible(N, bobs_bucket_list, min_bucket_list):
-    excess_buckets_count = 0
-    for i in range(len(bobs_bucket_list)):
-        extra_buckets = (bobs_bucket_list[i] - min_bucket_list[i])//2
-        if extra_buckets >= 0:
-            excess_buckets_count += extra_buckets
-        else:
-            excess_buckets_count += extra_buckets
-
-    if excess_buckets_count >= 0:
+# Problem setter's logic
+def color_buckets_possible(N, A_list, B_list):
+    have_buckets = 0
+    required_buckets = 0
+    for i in range(N):
+        if A_list[i] == B_list[i]:
+            continue
+        if A_list[i] > B_list[i]:
+            have_buckets += (A_list[i] - B_list[i])//2
+        elif B_list[i] > A_list[i]:
+            required_buckets += B_list[i] - A_list[i]
+    
+    if have_buckets >= required_buckets:
         print("Yes")
     else:
         print("No")
-
 
 if __name__ == "__main__":
 
