@@ -1,23 +1,8 @@
 # Meeting the origin
 
-# My solution (All TCs passed)
-def origin_after_operations(S):
-    operations_count = 0
-    dict_chars = Counter(S)
-    sum_LR = dict_chars["L"] + dict_chars["R"]
-    sum_UD = dict_chars["U"] + dict_chars["D"]
-    min_LR = min(dict_chars["L"], dict_chars["R"])
-    min_UD = min(dict_chars["U"], dict_chars["D"])
-
-    if not sum_LR % 2 == 0:
-        operations_count += 1
-    operations_count += sum_LR//2 - min_LR
-
-    if not sum_UD % 2 == 0:
-        operations_count += 1
-    operations_count += sum_UD//2 - min_UD
-
-    print(operations_count)
+# Problem setter's solution
+def origin_after_operations(s):
+    print((abs(s.count('L') - s.count('R')) + 1) // 2 + (abs(s.count('U') - s.count('D')) + 1) // 2)
 
 
 if __name__ == "__main__":
