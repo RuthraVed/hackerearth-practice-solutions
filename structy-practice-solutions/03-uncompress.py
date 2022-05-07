@@ -18,7 +18,7 @@
 from timer_module import timer_func
 
 @timer_func
-def uncompress(s):
+def uncompress_my_way(s):
     number_str = ''
     uncompressed_result = ''
     for char in s:
@@ -31,6 +31,20 @@ def uncompress(s):
             number_str = ''
     
     return uncompressed_result
+
+@timer_func
+def uncompress_alvin_way(s):
+  numbers = '0123456789'
+  result = ""
+  i = j = 0
+  # Used for-loop, as anyhow j needs to keep incrementing
+  for j in range(0, len(s)):
+    if s[j] in numbers:
+      continue # j increments automatically
+    else:
+      result += s[j]*int(s[i:j])
+      i = j + 1 # Bringing i to j's position
+  return result
 
 # --- Tests --- 
 
@@ -49,9 +63,12 @@ expected_results = [
     'nnneeeeeeeeeeeezz',
     'yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy',
 ]
+def test_func_by_name(func):
+    for i in range(0,len(test_input_values)):
+        result = func(test_input_values[i])    # Test solution against every input
+        assert result == expected_results[i], \
+            f'Expected max value as {expected_results[i]}, got: {result}'
+        print(f'Test [{i}] passed, with correct result as {expected_results[i]}.')
 
-for i in range(0,len(test_input_values)):
-    result = uncompress(test_input_values[i])    # Test solution against every input
-    assert result == expected_results[i], \
-        f'Expected max value as {expected_results[i]}, got: {result}'
-    print(f'test [{i}] passed, with correct result as {expected_results[i]}.')
+test_func_by_name(uncompress_my_way)
+test_func_by_name(uncompress_alvin_way)
